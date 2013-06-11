@@ -9,6 +9,7 @@ using EPiServer;
 using EPiServer.Core;
 using EPiServer.DataAbstraction;
 using EPiServer.DataAnnotations;
+using Perks;
 
 namespace EPiBricks.Blocks
 {
@@ -39,14 +40,14 @@ namespace EPiBricks.Blocks
 
         public virtual Link ToLink()
         {
-            if (Url == null)
+            if (Url == null && Text.IsNullOrEmpty())
             {
                 return null;
             }
 
             return new Link
             {
-                Url = Url.ToString(),
+                Url = Url.IfNotNull(x => x.ToString()),
                 Text = Text,
                 Target = Target
             };

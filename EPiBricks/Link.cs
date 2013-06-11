@@ -20,6 +20,8 @@ namespace EPiBricks
 
         public string Class { get; set; }
 
+        public object HtmlAttributes { get; set; }
+
         public IHtmlString EditorStart { get; set; }
 
         public IHtmlString EditorEnd { get; set; }
@@ -33,29 +35,40 @@ namespace EPiBricks
             return string.Concat(EditorStart.ToHtml(), linkHtml, EditorEnd.ToHtml());
         }
 
-        public string ToHtml(object htmlAttributes = null)
+        public string ToHtml()
         {
-            if (Url.IsNullOrEmpty())
+            if (Url.IsNullOrEmpty() && Text.IsNullOrEmpty())
             {
                 return null;
             }
 
-            var a = new TagBuilder("a");
-            a.Attributes.Add("href", Url);
-            a.SetInnerText(Text.IfNotNullOrEmpty() ?? Url);
+            TagBuilder tag;
 
-            if (Target.IsNotNullOrEmpty() && Target != "_self")
+            if (Url.IsNotNullOrEmpty())
             {
-                a.Attributes.Add("target", Target);
+                tag = new TagBuilder("a");
+                tag.Attributes.Add("href", Url);
+
+                if (Target.IsNotNullOrEmpty() && Target != "_self")
+                {
+                    tag.Attributes.Add("target", Target);
+                }
             }
+            else
+            {
+                tag = new TagBuilder("span");
+            }
+
+            tag.SetInnerText(Text.IfNotNullOrEmpty() ?? Url);
+            
             if (Class.IsNotNullOrEmpty())
             {
-                a.AddCssClass(Class);
+                tag.AddCssClass(Class);
             }
 
-            a.MergeAttributes(HtmlHelper.AnonymousObjectToHtmlAttributes(htmlAttributes));
+            tag.MergeAttributes(HtmlHelper.AnonymousObjectToHtmlAttributes(HtmlAttributes));
 
-            return a.ToString();
+            return tag.ToString();
         }
     }
 }
