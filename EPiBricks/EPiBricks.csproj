@@ -175,6 +175,7 @@
     <Compile Include="Blocks\LinkBlock.cs" />
     <Compile Include="Controllers\LinkBlockController.cs" />
     <Compile Include="DataAnnotations\SelectOptionsAttribute.cs" />
+    <Compile Include="HtmlExtensions.cs" />
     <Compile Include="Image.cs" />
     <Compile Include="Initializer.cs" />
     <Compile Include="Link.cs" />

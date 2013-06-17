@@ -10,7 +10,7 @@ using Perks;
 
 namespace EPiBricks
 {
-    public class Link : IEditHtmlString
+    public class Link : IEditHtmlString, ICustomizable
     {
         public string Url { get; set; }
 
@@ -20,7 +20,7 @@ namespace EPiBricks
 
         public string Class { get; set; }
 
-        public object HtmlAttributes { get; set; }
+        public IDictionary<string, object> Attributes { get; set; }
 
         public IHtmlString EditorStart { get; set; }
 
@@ -66,7 +66,7 @@ namespace EPiBricks
                 tag.AddCssClass(Class);
             }
 
-            tag.MergeAttributes(HtmlHelper.AnonymousObjectToHtmlAttributes(HtmlAttributes));
+            tag.MergeAttributes(Attributes);
 
             return tag.ToString();
         }

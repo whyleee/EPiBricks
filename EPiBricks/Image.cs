@@ -10,7 +10,7 @@ using Perks;
 
 namespace EPiBricks
 {
-    public class Image : IEditHtmlString
+    public class Image : IEditHtmlString, ICustomizable
     {
         public string Url { get; set; }
 
@@ -19,6 +19,8 @@ namespace EPiBricks
         public int Height { get; set; }
 
         public string Alt { get; set; }
+
+        public IDictionary<string, object> Attributes { get; set; }
 
         public IHtmlString EditorStart { get; set; }
 
@@ -33,7 +35,7 @@ namespace EPiBricks
             return string.Concat(EditorStart.ToHtml(), imageHtml, EditorEnd.ToHtml());
         }
 
-        public string ToHtml(bool renderSize = false)
+        public string ToHtml()
         {
             if (Url.IsNullOrEmpty())
             {
@@ -48,11 +50,17 @@ namespace EPiBricks
                 img.Attributes.Add("alt", Alt);
             }
 
-            if (renderSize && Width > 0 && Height > 0)
+            if (Width > 0 && Height > 0)
             {
                 img.Attributes.Add("width", Width.ToString());
                 img.Attributes.Add("height", Height.ToString());
+
+                var src = img.Attributes["src"];
+                img.Attributes["src"] = src + string.Format("{0}width={1}&height={2}",
+                    src.Contains('?') ? ':' : '?', Width, Height);
             }
+
+            img.MergeAttributes(Attributes);
 
             return img.ToString(TagRenderMode.SelfClosing);
         }
