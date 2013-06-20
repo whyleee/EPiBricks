@@ -23,18 +23,12 @@ namespace EPiBricks.Rendering
 
         public virtual bool CanHandle(ModelPropertyContext context)
         {
-            return context.Property.PropertyType.Is<Link>();
+            return context.PropertyValue is Link;
         }
 
         public virtual void Process(ModelPropertyContext context)
         {
             var link = (Link) context.PropertyValue;
-
-            if (link == null)
-            {
-                return;
-            }
-
             link.Url = _urlRewriter.GetFriendlyUrl(link.Url, context.ExecutionContext.RequestContext, RouteTable.Routes);
         }
     }

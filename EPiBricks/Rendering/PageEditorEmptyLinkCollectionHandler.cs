@@ -20,7 +20,7 @@ namespace EPiBricks.Rendering
                     Text = "[" + editName.ToFriendlyString() + "]"
                 };
 
-            SetValue(new List<Link>(new[] {fakeLink}), context);
+            context.PropertyValue = new List<Link>(new[] {fakeLink});
         }
 
         protected override bool FilterByType(ModelPropertyContext context)

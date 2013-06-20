@@ -23,17 +23,12 @@ namespace EPiBricks.Rendering
 
         public virtual bool CanHandle(ModelPropertyContext context)
         {
-            return context.Property.PropertyType.Is<IEnumerable<Link>>();
+            return context.PropertyValue is IEnumerable<Link>;
         }
 
         public virtual void Process(ModelPropertyContext context)
         {
             var links = (IEnumerable<Link>) context.PropertyValue;
-
-            if (links == null)
-            {
-                return;
-            }
 
             foreach (var link in links)
             {
