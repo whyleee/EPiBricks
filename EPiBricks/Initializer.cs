@@ -1,4 +1,6 @@
-﻿using System.Web.Mvc;
+﻿using System.Linq;
+using System.Web.Mvc;
+using EPiBricks.Configuration;
 using EPiBricks.Controllers;
 using EPiServer.Framework;
 using EPiServer.Framework.Initialization;
@@ -9,16 +11,21 @@ namespace EPiBricks
     [ModuleDependency(typeof(EPiServer.Web.InitializationModule))]
     public class Initializer : IInitializableModule
     {
-        public void Initialize(InitializationEngine context)
+        public virtual void Initialize(InitializationEngine context)
         {
             ControllerBuilder.Current.DefaultNamespaces.Add(typeof(LinkBlockController).Namespace);
+
+            // Additional content value providers
+            ValueProviderFactories.Factories.Add(new ShortNamesContentDataValueProviderFactory());
+            ValueProviderFactories.Factories.Add(new HomePageValueProviderFactory());
+            ValueProviderFactories.Factories.Add(new ChildActionContentDataValueProviderFactory());
         }
 
-        public void Uninitialize(InitializationEngine context)
+        public virtual void Uninitialize(InitializationEngine context)
         {
         }
 
-        public void Preload(string[] parameters)
+        public virtual void Preload(string[] parameters)
         {
         }
     }

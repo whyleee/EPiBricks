@@ -173,6 +173,9 @@
     <Compile Include="Aids\StringExtensions.cs" />
     <Compile Include="Blocks\ImageBlock.cs" />
     <Compile Include="Blocks\LinkBlock.cs" />
+    <Compile Include="Configuration\ChildActionContentDataValueProvider.cs" />
+    <Compile Include="Configuration\HomePageValueProvider.cs" />
+    <Compile Include="Configuration\ShortNamesContentDataValueProviderFactory.cs" />
     <Compile Include="Controllers\LinkBlockController.cs" />
     <Compile Include="DataAnnotations\SelectOptionsAttribute.cs" />
     <Compile Include="HtmlExtensions.cs" />
@@ -195,6 +198,7 @@
       <Name>EPiGlue</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
