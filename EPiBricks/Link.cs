@@ -12,6 +12,11 @@ namespace EPiBricks
 {
     public class Link : IEditHtmlString, ICustomizable
     {
+        public Link()
+        {
+            Attributes = new Dictionary<string, object>();
+        }
+
         public string Url { get; set; }
 
         public string Text { get; set; }

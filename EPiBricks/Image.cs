@@ -12,6 +12,11 @@ namespace EPiBricks
 {
     public class Image : IEditHtmlString, ICustomizable
     {
+        public Image()
+        {
+            Attributes = new Dictionary<string, object>();
+        }
+
         public string Url { get; set; }
 
         public int Width { get; set; }
