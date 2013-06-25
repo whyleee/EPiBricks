@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/10/nuspec.xsd">
+    <metadata>
+        <id>EPiBricks</id>
+        <version>0.8-beta</version>
+        <authors>Pavel Nezhencev</authors>
+        <projectUrl>https://github.com/whyleee/EPiBricks</projectUrl>
+        <requireLicenseAcceptance>false</requireLicenseAcceptance>
+        <description>Essentials for EPiServer 7 development: image/link blocks, page editor support, content helpers, model value providers, event handlers and other.</description>
+        <releaseNotes>- Image and link blocks with page editor and drag-and-drop support
+- Select list property type
+- Content value providers for MVC
+- Content helpers, event handlers</releaseNotes>
+        <tags>EPiServer essentials blocks image link helpers MVC models event handlers</tags>
+        <dependencies>
+            <dependency id="EPiServer.CMS.Core" version="7.0.586.1" />
+            <dependency id="EPiServer.Framework" version="7.0.859.1" />
+            <dependency id="Microsoft.AspNet.Mvc" version="4.0.20710.0" />
+            <dependency id="EPiGlue" version="0.5-beta" />
+            <dependency id="Perks" version="1.3.5-beta" />
+            <dependency id="Perks.Mvc" version="1.3.5-beta" />
+        </dependencies>
+        <frameworkAssemblies>
+            <frameworkAssembly assemblyName="Microsoft.CSharp" targetFramework="" />
+            <frameworkAssembly assemblyName="System" targetFramework="" />
+            <frameworkAssembly assemblyName="System.Core" targetFramework="" />
+            <frameworkAssembly assemblyName="System.ComponentModel.DataAnnotations" targetFramework="" />
+            <frameworkAssembly assemblyName="System.Configuration" targetFramework="" />
+            <frameworkAssembly assemblyName="System.Web" targetFramework="" />
+            <frameworkAssembly assemblyName="System.Xml" targetFramework="" />
+        </frameworkAssemblies>
+    </metadata>
+    <files>
+        <file src="net45\EPiBricks.dll" target="lib\net45\EPiBricks.dll" />
+    </files>
+</package>

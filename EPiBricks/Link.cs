@@ -7,6 +7,7 @@ using System.Web;
 using System.Web.Mvc;
 using EPiGlue;
 using Perks;
+using Perks.Mvc;
 
 namespace EPiBricks
 {
