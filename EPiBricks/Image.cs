@@ -26,6 +26,8 @@ namespace EPiBricks
 
         public string Alt { get; set; }
 
+        public string Transform { get; set; }
+
         public IDictionary<string, object> Attributes { get; set; }
 
         public IHtmlString EditorStart { get; set; }
@@ -43,6 +45,8 @@ namespace EPiBricks
 
         public string ToHtml()
         {
+            ParseAttributes();
+
             if (Url.IsNullOrEmpty())
             {
                 return null;
@@ -64,11 +68,30 @@ namespace EPiBricks
                 var src = img.Attributes["src"];
                 img.Attributes["src"] = src + string.Format("{0}width={1}&height={2}",
                     src.Contains('?') ? ':' : '?', Width, Height);
+
+                if (Transform.IsNotNullOrEmpty())
+                {
+                    img.Attributes["src"] = string.Format("{0}&transform={1}",
+                        img.Attributes["src"], Transform);
+                }
             }
 
             img.MergeAttributes(Attributes);
 
             return img.ToString(TagRenderMode.SelfClosing);
+        }
+
+        private void ParseAttributes()
+        {
+            foreach (var attr in Attributes)
+            {
+                var prop = GetType().GetProperty(attr.Key.ToTitleCase());
+
+                if (prop != null)
+                {
+                    prop.SetValue(this, attr.Value);
+                }
+            }
         }
     }
 }
