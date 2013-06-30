@@ -7,6 +7,7 @@ using EPiServer;
 using EPiServer.Core;
 using EPiServer.SpecializedProperties;
 using EPiServer.Web;
+using Perks;
 
 namespace EPiBricks
 {
@@ -113,6 +114,13 @@ namespace EPiBricks
                 Text = link.Text,
                 Target = link.Target
             };
+        }
+
+        // Other
+
+        public static Video ToVideo(this string videoUrl)
+        {
+            return videoUrl.IfNotNullOrEmpty(url => new Video {Url = videoUrl});
         }
     }
 }

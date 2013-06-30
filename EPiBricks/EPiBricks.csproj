@@ -211,6 +211,7 @@
     <Compile Include="Rendering\LinkFriendlyUrlRewriter.cs" />
     <Compile Include="Rendering\PageEditorEmptyLinkCollectionHandler.cs" />
     <Compile Include="UIHint.cs" />
+    <Compile Include="Video.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="EPiBricks.nuspec" />
