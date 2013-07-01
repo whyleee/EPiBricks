@@ -190,6 +190,7 @@
     <Compile Include="Content\IVisualizable.cs" />
     <Compile Include="Controllers\ImageBlockController.cs" />
     <Compile Include="Controllers\LinkBlockController.cs" />
+    <Compile Include="DataAnnotations\AvailableContentTypesAttribute.cs" />
     <Compile Include="DataAnnotations\SelectOptionsAttribute.cs" />
     <Compile Include="EditableArea.cs" />
     <Compile Include="Events\ContentEventHandler.cs" />
