@@ -2,15 +2,14 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2011/10/nuspec.xsd">
     <metadata>
         <id>EPiBricks</id>
-        <version>0.8-beta</version>
+        <version>0.8.1-beta</version>
         <authors>Pavel Nezhencev</authors>
         <projectUrl>https://github.com/whyleee/EPiBricks</projectUrl>
         <requireLicenseAcceptance>false</requireLicenseAcceptance>
         <description>Essentials for EPiServer 7 development: image/link blocks, page editor support, content helpers, model value providers, event handlers and other.</description>
-        <releaseNotes>- Image and link blocks with page editor and drag-and-drop support
-- Select list property type
-- Content value providers for MVC
-- Content helpers, event handlers</releaseNotes>
+        <releaseNotes>- Very basic support for videos
+- Support for image transforms
+- Content area block restrictions</releaseNotes>
         <tags>EPiServer essentials blocks image link helpers MVC models event handlers</tags>
         <dependencies>
             <dependency id="EPiServer.CMS.Core" version="7.0.586.1" />
