@@ -89,7 +89,7 @@ namespace EPiBricks
 
                 if (prop != null)
                 {
-                    prop.SetValue(this, attr.Value);
+                    prop.SetValue(this, attr.Value, null);
                 }
             }
         }

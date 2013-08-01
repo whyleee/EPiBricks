@@ -43,7 +43,9 @@ namespace EPiBricks.DataAnnotations
             {
                 if (IncludeFrom != null)
                 {
-                    var includedTypes = IncludeFrom.GetCustomAttribute<AvailableContentTypesAttribute>().IfNotNull(x => x.Include);
+                    var includedTypes = ((AvailableContentTypesAttribute) Attribute
+                        .GetCustomAttribute(IncludeFrom, typeof(AvailableContentTypesAttribute)))
+                        .IfNotNull(x => x.Include);
 
                     if (includedTypes != null)
                     {
