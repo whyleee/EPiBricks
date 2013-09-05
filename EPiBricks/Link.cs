@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -70,6 +71,13 @@ namespace EPiBricks
             if (Class.IsNotNullOrEmpty())
             {
                 tag.AddCssClass(Class);
+
+                if (Attributes.ContainsKey("class"))
+                {
+                    var additonalClass = Convert.ToString(Attributes["class"], CultureInfo.InvariantCulture);
+                    tag.AddCssClass(additonalClass);
+                    Attributes.Remove("class");
+                }
             }
 
             tag.MergeAttributes(Attributes);
